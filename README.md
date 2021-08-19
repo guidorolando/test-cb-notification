@@ -4,7 +4,7 @@ Notification app of CRYPTO BETS:
 * Send email to winners
 * Receive message from Backend through a topic of kafka
 
-###Pre condition
+### Pre condition
 * JDK 11
 * maven 3 or higger
 * Running kafka and zookeeper
