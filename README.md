@@ -1,16 +1,32 @@
-# Read Me First
-The following was discovered as part of building this project:
+# CRYPTO BETS NOTIFICATION
+Notification app of CRYPTO BETS:
 
-* The original package name 'com.test.cb-notification' is invalid and this project uses 'com.test.cbnotification' instead.
+* Send email to winners
+* Receive message from Backend through a topic of kafka
+
+###Pre condition
+* JDK 11
+* maven 3 or higger
+* Running kafka and zookeeper
+* Running cb-test-back repository (https://github.com/guidorolando/test-cb-back)
+
 
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+Change over application.properties:
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.5.3/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.5.3/maven-plugin/reference/html/#build-image)
-* [Spring for Apache Kafka](https://docs.spring.io/spring-boot/docs/2.5.3/reference/htmlsingle/#boot-features-kafka)
-* [Java Mail Sender](https://docs.spring.io/spring-boot/docs/2.5.3/reference/htmlsingle/#boot-features-email)
+* Add environment variables to set credentials of gmail 
 
+        spring.mail.username=${EMAIL_USER}
+        spring.mail.password=${EMAIL_PASSWORD}
+
+* Needs configurations of kafka
+    
+        spring.kafka.consumer.boostrap-servers= localhost:9092
+        spring.kafka.consumer.group_id=group_id
+        spring.kafka.consumer.auto-offset-reset=earliest
+
+# BUILD AND RUN
+
+    mvn clean compile package
+    mvn spring-boot:run
